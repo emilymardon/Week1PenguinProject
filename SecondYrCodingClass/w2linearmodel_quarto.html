@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Emily">
+
+<title>w2linearmodel_quarto</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="w2linearmodel_quarto_files/libs/clipboard/clipboard.min.js"></script>
+<script src="w2linearmodel_quarto_files/libs/quarto-html/quarto.js"></script>
+<script src="w2linearmodel_quarto_files/libs/quarto-html/popper.min.js"></script>
+<script src="w2linearmodel_quarto_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="w2linearmodel_quarto_files/libs/quarto-html/anchor.min.js"></script>
+<link href="w2linearmodel_quarto_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="w2linearmodel_quarto_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="w2linearmodel_quarto_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="w2linearmodel_quarto_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="w2linearmodel_quarto_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">w2linearmodel_quarto</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Emily </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="callout-note callout callout-style-simple callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+this is a practice exercise based on data from the Sleuth3 package
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<p>Load libraries and set your working directory.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tinytex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tinytex' was built under R version 4.3.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Sleuth3)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>here() starts at /Users/mardonemily/Library/Mobile Documents/com~apple~CloudDocs/SecondYrCodingClass</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">here</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "/Users/mardonemily/Library/Mobile Documents/com~apple~CloudDocs/SecondYrCodingClass"</code></pre>
+</div>
+</div>
+<p>:::</p>
+<section id="looking-at-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="looking-at-the-data">Looking at the data</h2>
+<p>The data has a balanced fully-factorial design. There are 5 columns and 30 rows. The categorical variable is water stress, measured on 2 levels, and the continuous variable is ozone. The response variable is soybean yield. It has a randomized design (no blocking).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(case1402, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Stress SO2   O3 Forrest William
+1 Well-watered   0 0.02    4376    5561
+2 Well-watered   0 0.05    4544    5947
+3 Well-watered   0 0.07    2806    4273</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(case1402)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   30 obs. of  5 variables:
+ $ Stress : Factor w/ 2 levels "Stressed","Well-watered": 2 2 2 2 2 2 2 2 2 2 ...
+ $ SO2    : num  0 0 0 0 0 0.02 0.02 0.02 0.02 0.02 ...
+ $ O3     : num  0.02 0.05 0.07 0.08 0.1 0.02 0.05 0.07 0.08 0.1 ...
+ $ Forrest: int  4376 4544 2806 3339 3320 3747 4570 4635 3613 3259 ...
+ $ William: int  5561 5947 4273 3470 3080 5092 4752 4232 2867 3106 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(case1402)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Stress        SO2                O3           Forrest    
+ Stressed    :15   Min.   :0.00000   Min.   :0.020   Min.   :2158  
+ Well-watered:15   1st Qu.:0.00000   1st Qu.:0.050   1st Qu.:3245  
+                   Median :0.02000   Median :0.070   Median :3478  
+                   Mean   :0.02667   Mean   :0.064   Mean   :3699  
+                   3rd Qu.:0.06000   3rd Qu.:0.080   3rd Qu.:4327  
+                   Max.   :0.06000   Max.   :0.100   Max.   :5573  
+    William    
+ Min.   :2101  
+ 1st Qu.:2889  
+ Median :3428  
+ Mean   :3635  
+ 3rd Qu.:4263  
+ Max.   :5947  </code></pre>
+</div>
+</div>
+<section id="log-transform-yields-for-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="log-transform-yields-for-analysis">Log transform yields for analysis</h4>
+<p>Just looking at the William soybean variety for now.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>case1402<span class="sc">$</span>log_William <span class="ot">&lt;-</span> <span class="fu">log</span>(case1402<span class="sc">$</span>William)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(case1402, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Stress SO2   O3 Forrest William log_William
+1 Well-watered   0 0.02    4376    5561    8.623533
+2 Well-watered   0 0.05    4544    5947    8.690642
+3 Well-watered   0 0.07    2806    4273    8.360071</code></pre>
+</div>
+</div>
+</section>
+<section id="labeling-the-data-in-an-informative-way" class="level4">
+<h4 class="anchored" data-anchor-id="labeling-the-data-in-an-informative-way">Labeling the data in an informative way</h4>
+<p>Label x and y axis with units.</p>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+expression(paste()) is used to render the mathematical symbols of the units nicely. Paste combines rendered (such as turning mu into the correct symbol) and unrendered parts of the line together. Useful for mixed formats in one string.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a> xlabel <span class="ot">&lt;-</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">"Ozone ("</span>, mu,<span class="st">"L L"</span><span class="sc">^</span><span class="st">"-1"</span>,<span class="st">")"</span>))</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  ylabel <span class="ot">&lt;-</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">"Log Yield (kg ha"</span><span class="sc">^</span><span class="st">"-1"</span>,<span class="st">")"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="visualizing-data-in-a-panel-plot" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-data-in-a-panel-plot">Visualizing data in a panel plot</h2>
+<p>Plotting yield versus ozone, categorized by water stress.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>Fig13_0 <span class="ot">&lt;-</span> case1402 <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> O3, <span class="at">y =</span> <span class="fu">log</span>(William))) <span class="sc">+</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(. <span class="sc">~</span> Stress) <span class="sc">+</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> xlabel, <span class="at">y =</span> ylabel, <span class="at">subtitle =</span> <span class="st">"Figure 1. Yield (natural log transformed) of William variety soya beans as a function of low-level ozone and water stress."</span>) <span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  Fig13_0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="w2linearmodel_quarto_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="todays-exercise-linear-model-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="todays-exercise-linear-model-analysis">Today’s exercise: linear model analysis</h2>
+<section id="fit-a-anova-type-linear-model-that-analyses-the-yield-of-the-william-soya-beans-log-transformed-as-a-function-of-the-effects-of-water-stress." class="level6">
+<h6 class="anchored" data-anchor-id="fit-a-anova-type-linear-model-that-analyses-the-yield-of-the-william-soya-beans-log-transformed-as-a-function-of-the-effects-of-water-stress.">1. Fit a (ANOVA-type) linear model that analyses the yield of the William soya beans (log transformed) as a function of the effects of water stress.</h6>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>stressANOVA <span class="ot">&lt;-</span> <span class="fu">lm</span>(log_William<span class="sc">~</span>Stress, <span class="at">data =</span> case1402)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(stressANOVA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: log_William
+          Df  Sum Sq  Mean Sq F value  Pr(&gt;F)  
+Stress     1 0.23764 0.237642  3.8729 0.05905 .
+Residuals 28 1.71810 0.061361                  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>Effect of water stress on William soybean yield is not statistically significant. Insufficient evidence to reject H0.</p>
+</section>
+<section id="fit-a-regression-type-linear-model-that-analyses-the-yield-of-the-william-soya-beans-log-transformed-as-a-function-of-the-effects-of-ozone." class="level6">
+<h6 class="anchored" data-anchor-id="fit-a-regression-type-linear-model-that-analyses-the-yield-of-the-william-soya-beans-log-transformed-as-a-function-of-the-effects-of-ozone.">2. Fit a (regression-type) linear model that analyses the yield of the William soya beans (log transformed) as a function of the effects of ozone.</h6>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ozoneRegression <span class="ot">&lt;-</span> <span class="fu">lm</span>(log_William<span class="sc">~</span>O3, <span class="at">data =</span> case1402)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ozoneRegression)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = log_William ~ O3, data = case1402)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.34304 -0.08886 -0.00583  0.11007  0.42534 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  8.62234    0.07957 108.356  &lt; 2e-16 ***
+O3          -7.14080    1.14380  -6.243 9.54e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.1709 on 28 degrees of freedom
+Multiple R-squared:  0.5819,    Adjusted R-squared:  0.567 
+F-statistic: 38.98 on 1 and 28 DF,  p-value: 9.54e-07</code></pre>
+</div>
+</div>
+<p>The effects of ozone on William soybean yield are statistically significant (P&lt;0.05).</p>
+</section>
+<section id="fit-ancova-type-linear-models-that-analyses-the-yield-of-the-william-soya-beans-log-transformed-as-a-function-of-the-effects-of-water-stress-with-and-without-their-interaction." class="level6">
+<h6 class="anchored" data-anchor-id="fit-ancova-type-linear-models-that-analyses-the-yield-of-the-william-soya-beans-log-transformed-as-a-function-of-the-effects-of-water-stress-with-and-without-their-interaction.">3. Fit (ANCOVA-type) linear models that analyses the yield of the William soya beans (log transformed) as a function of the effects of water stress, with and without their interaction.</h6>
+<p>Deducing whether or not these factors interact. First we need to fit a reduced model which does not include the interaction term.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>soyReducedModel <span class="ot">&lt;-</span> <span class="fu">lm</span>(log_William<span class="sc">~</span>O3 <span class="sc">+</span> Stress, <span class="at">data =</span> case1402)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>case1402<span class="sc">$</span>fit0 <span class="ot">&lt;-</span> <span class="fu">predict</span>(soyReducedModel)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(soyReducedModel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: log_William
+          Df  Sum Sq Mean Sq F value    Pr(&gt;F)    
+O3         1 1.13812 1.13812  52.983 7.893e-08 ***
+Stress     1 0.23764 0.23764  11.063  0.002547 ** 
+Residuals 27 0.57998 0.02148                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>There are statistically significant effects of both ozone and water stress on William soybean yields.We have multiple explanatory variables.</p>
+<p>Now we can fit the full model.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>soyFullModel <span class="ot">&lt;-</span> <span class="fu">lm</span>(log_William<span class="sc">~</span>O3<span class="sc">*</span>Stress, <span class="at">data =</span> case1402)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>case1402<span class="sc">$</span>fit1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(soyFullModel)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(soyFullModel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: log_William
+          Df  Sum Sq Mean Sq F value    Pr(&gt;F)    
+O3         1 1.13812 1.13812 51.9277 1.185e-07 ***
+Stress     1 0.23764 0.23764 10.8426  0.002859 ** 
+O3:Stress  1 0.01013 0.01013  0.4621  0.502639    
+Residuals 26 0.56985 0.02192                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>There are no statistically significant interaction effects for ozone and water stress on William soybean yield. Significant main effects do exist.</p>
+</section>
+<section id="testing-the-direction-of-main-effects-on-yield" class="level6">
+<h6 class="anchored" data-anchor-id="testing-the-direction-of-main-effects-on-yield">Testing the direction of main effects on yield</h6>
+<p>We know that ozone and water stress each individually have effects on soybean yield. We can plot the data to deduce the direction of these effects.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(case1402, <span class="fu">aes</span>(O3, log_William, <span class="at">colour =</span> Stress,</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">shape =</span> Stress, <span class="at">linetype=</span>Stress)) <span class="sc">+</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">col =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"firebrick"</span>, <span class="st">"firebrick"</span>)) <span class="sc">+</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> xlabel, <span class="at">y =</span> <span class="st">"natural log Yield"</span>, <span class="at">title=</span> <span class="st">"The effects of ozone and water stress on William soybean yield"</span>, <span class="at">subtitle=</span> <span class="st">"Main effects of ozone and water stress are present, there are no interaction effects."</span>) <span class="sc">+</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="w2linearmodel_quarto_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

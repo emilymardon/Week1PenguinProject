@@ -1,0 +1,124 @@
+::: {.callout-note appearance="simple"}
+## this is a practice exercise based on data from the Sleuth3 package
+:::
+
+Load libraries and set your working directory.
+
+```{r}
+library(tinytex)
+library(Sleuth3)
+library(here)
+library(ggplot2)
+here()
+```
+
+---
+title: "w2linearmodel_quarto"
+author: "Emily"
+format: html
+editor: visual
+---
+
+:::
+
+## Looking at the data
+
+The data has a balanced fully-factorial design. There are 5 columns and 30 rows. The categorical variable is water stress, measured on 2 levels, and the continuous variable is ozone. The response variable is soybean yield. It has a randomized design (no blocking).
+
+```{r}
+head(case1402, 3)
+str(case1402)
+summary(case1402)
+```
+
+#### Log transform yields for analysis
+
+Just looking at the William soybean variety for now.
+
+```{r}
+case1402$log_William <- log(case1402$William)
+head(case1402, 3)
+```
+
+#### Labeling the data in an informative way
+
+Label x and y axis with units.
+
+::: {.callout-note appearance="simple" icon="false"}
+## expression(paste()) is used to render the mathematical symbols of the units nicely. Paste combines rendered (such as turning mu into the correct symbol) and unrendered parts of the line together. Useful for mixed formats in one string.
+:::
+
+```{r}
+ xlabel <- expression(paste("Ozone (", mu,"L L"^"-1",")"))
+  ylabel <- expression(paste("Log Yield (kg ha"^"-1",")"))
+```
+
+## Visualizing data in a panel plot
+
+Plotting yield versus ozone, categorized by water stress.
+
+```{r}
+Fig13_0 <- case1402 |>
+    ggplot() +
+    geom_point(aes(x = O3, y = log(William))) +
+    facet_wrap(. ~ Stress) +
+    labs(x = xlabel, y = ylabel, subtitle = "Figure 1. Yield (natural log transformed) of William variety soya beans as a function of low-level ozone and water stress.") +
+    xlim(0, 0.1) +
+    theme_bw()
+  Fig13_0
+```
+
+## Today's exercise: linear model analysis
+
+###### 1. Fit a (ANOVA-type) linear model that analyses the yield of the William soya beans (log transformed) as a function of the effects of water stress.
+
+```{r}
+stressANOVA <- lm(log_William~Stress, data = case1402)
+anova(stressANOVA)
+```
+
+Effect of water stress on William soybean yield is not statistically significant. Insufficient evidence to reject H0.
+
+###### 2. Fit a (regression-type) linear model that analyses the yield of the William soya beans (log transformed) as a function of the effects of ozone.
+
+```{r}
+ozoneRegression <- lm(log_William~O3, data = case1402)
+summary(ozoneRegression)
+```
+The effects of ozone on William soybean yield are statistically significant (P<0.05).
+
+###### 3. Fit (ANCOVA-type) linear models that analyses the yield of the William soya beans (log transformed) as a function of the effects of water stress, with and without their interaction.
+
+Deducing whether or not these factors interact.
+First we need to fit a reduced model which does not include the interaction term.
+```{r}
+soyReducedModel <- lm(log_William~O3 + Stress, data = case1402)
+case1402$fit0 <- predict(soyReducedModel)
+
+anova(soyReducedModel)
+```
+There are statistically significant effects of both ozone and water stress on William soybean yields.We have multiple explanatory variables.
+
+Now we can fit the full model.
+```{r}
+soyFullModel <- lm(log_William~O3*Stress, data = case1402)
+case1402$fit1 <- predict(soyFullModel)
+anova(soyFullModel)
+```
+There are no statistically significant interaction effects for ozone and water stress on William soybean yield. Significant main effects do exist.
+
+###### Testing the direction of main effects on yield
+
+We know that ozone and water stress each individually have effects on soybean yield. We can plot the data to deduce the direction of these effects.
+
+```{r}
+ggplot(case1402, aes(O3, log_William, colour = Stress,
+                    shape = Stress, linetype=Stress)) +
+  geom_smooth(method = "lm", size = 1, se = FALSE, col = "black") +
+  geom_point(size = 3) +
+  scale_colour_manual(values = c("firebrick", "firebrick")) +
+  scale_shape_manual(values = c(16, 1)) +
+  labs(x = xlabel, y = "natural log Yield", title= "The effects of ozone and water stress on William soybean yield", subtitle= "Main effects of ozone and water stress are present, there are no interaction effects.") +
+  theme_classic()
+
+```
